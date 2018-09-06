@@ -13,18 +13,18 @@ zuul:
   ribbon:
     eager-load:
       enabled: true
-      clients: pig-auth,pig-upms-service,pig-demo-service
+      clients: irms-auth,irms-upms-service,irms-demo-service
   ignoredServices: '*'
   host:
     connect-timeout-millis: 10000
     socket-timeout-millis: 10000
   ratelimit:
-    key-prefix: pig-ratelimite
+    key-prefix: irms-ratelimite
     enabled: true
     repository: REDIS
     behind-proxy: true
     policies:
-      pig-upms-service:
+      irms-upms-service:
         limit: 100
         quota: 100
         refresh-interval: 3
@@ -38,8 +38,8 @@ security:
   sessions: stateless
   oauth2:
     client:
-      client-id: pig
-      client-secret: pig
+      client-id: irms
+      client-secret: irms
     resource:
       jwt:
          key-uri: ${security.auth.server}/oauth/token_key #解析jwt令牌所需要密钥的地址
